@@ -25,7 +25,7 @@ to look at the [Pleiades](https://pleiades.stoa.org/) dataset and see if you
 can find some interesting relationships.
 
 You decide to download the locations dataset from that resource at
-<http://atlantides.org/downloads/pleiades/dumps/pleiades-locations-20210201.csv.gz>.
+<http://atlantides.org/downloads/pleiades/dumps/>.
 You have a look at the dataset and it is a lot of complex data. Maybe you can
 use visualization to help make some sense of the complex data. There is also a
 README file for the dataset at
