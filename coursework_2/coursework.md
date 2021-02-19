@@ -1,36 +1,37 @@
 ---
 title: Assignment 2 --- Volume visualization
-credits: 20% of the module
-hours: 20--25 hours
-deadline: 31 March, 2020 11:00am
+subtitle: Deadline 11 a.m. on 5 May, 2021 
+author: Dr T. Torsney-Weir
+bibliography: /home/tom/Papers/vis_module.bib
 ...
+
+By submitting this coursework, electronically and/or hardcopy, you state that
+you fully understand and are complying with the university's policy on
+Academic Integrity and Academic Misconduct. The policy can be found at
+<https://myuni.swansea.ac.uk/academic-life/academic-misconduct/>.
+
+Credits for CSC337/CSCM37
+: 25% of module
 
 # Motivation
 
-You are given a selection of three volume data sets. Two of the three are unknown and
-mysterious. Your job is to explore, hypothesize, and discover what phenomena the data sets
-depict through the use of volume rendering. Rather than producing a volume renderer from
-scratch, you are to use an existing volume renderer such as:
-
-* The Visualization Toolkit (<http://www.vtk.org/>)
-* Voreen (<https://www.uni-muenster.de/Voreen/>)
-* ParaView (<http://www.paraview.org>)
-* Inviwo (<http://www.inviwo.org/>)
-
-to help you with your exploration. Voreen is installed on the lab machines.
-*You are not restricted to the above
-software. You may use any volume rendering software but you need to clear it
-with me first.* 
+You are given a selection of three volume data sets. Two of the three are
+unknown and mysterious. Your job is to explore, hypothesize, and discover what
+phenomena the data sets depict through the use of volume rendering. Rather than
+producing a volume renderer from scratch, you are to use an existing volume
+renderer called ParaView (<http://www.paraview.org>) to help you with your
+exploration.  *You are not restricted to the above software. You may use any
+volume rendering software but you need to clear it with me first.* 
 
 # Tasks
 
-The tools above are advanced, state-of-the-art volume rendering tools freely
-available for educational and research purposes. They are open source volume
-rendering libraries which enable interactive visualization of volumetric data
-sets with high flexibility. They are implemented as a multi-platform (Windows
-and Linux) C++ libraries using OpenGL and GLSL for GPU-based rendering,
-licensed under the terms of the GNU General Public License. In order to
-accomplish this task, you are to explore the software's features (look for
+Paraview is an advanced, state-of-the-art volume rendering tool freely
+available for educational and research purposes. It is based on open source
+volume rendering libraries which enable interactive visualization of volumetric
+data sets with high flexibility. They are implemented as a multi-platform
+(Windows and Linux) C++ libraries using OpenGL and GLSL for GPU-based
+rendering, licensed under the terms of the GNU General Public License. In order
+to accomplish this task, you are to explore the software's features (look for
 "Features") with a special focus on their various volume rendering techniques
 and transfer functions.
 
@@ -50,13 +51,28 @@ You do not necessarily need to answer these questions directly. My hope is that
 in the proces of doing the assignment you will discover some of the answers to
 these questions.  You will do this for 3 different tasks listed below.
 
+Your task is to use [literate visualization](https://www.gicentre.net/litvis)
+to produce **five different** visual designs which can convey some meaningful
+and hopefully interesting insight about the data.  You are required to supply
+five unique observations about the data (and not just repeat the same
+observation over and over).  For each design, fill out a literate visualization
+schema as discussed in
+<https://github.com/gicentre/litvis/blob/main/documents/tutorials/introduction/intro2.md>.
+
+Each visualization design you create should be in a separate markdown file.
+Unlike the first coursework, you can just embed videos or images in the
+markdown file.  Thus you will have 5 files at the end.  **You must include
+images and code in the markdown files** to create your visualizations.  There
+is a prepared set of files at
+<https://github.com/SwanseaU-TTW/csc337_volvis_cw>. 
+
 ## Task 1: Getting started
 
 Start off with rendering a known data set. We recommend you render a known data
-set supplied by one of the renderers from the list first. For example with
-Voreen, there is a standard Walnut data set. It can be downloaded from:
-<http://www.voreen.org/108-Data-Sets.html>. Any sample data set provided by a
-rendering package may be used to get started.
+set supplied by one of the renderers from the list first.  It can be downloaded
+from: <https://www.paraview.org/download/>. You may need to set the version
+field to v5.8 to get the data files.  Any sample data set may be used to get
+started.
 
 ## Task 2: Mystery Data Sets
 
@@ -69,97 +85,148 @@ other data2. They are not exciting names but part of your task is to discover
 what these 2 objects are! These are both volume datasets that have appeared in
 the scientific visualization literature many times already. 
 
-## Task 3: The Visible Human Project
+# Description Template
 
-For the third part, include two different volume visualizations and a
-description of each from the Visible Human Project:
-<https://www.nlm.nih.gov/research/visible/visible_human.html>.  Instructions on
-how to download the data for the Visible Human is available on their website.
-You can make two different visualizations of the same dataset or use two
-different datasets. Experiment!
+Provide the following information for each visual design you create. In
+parenthesis are the literate visualization labels to use to identify these in
+the source files:
+
+Aim (`aim`):
+: Things we can learn from the visualization, e.g., from this visualization
+  we can see this pattern...
+
+Visual Design Type (`vistype`):
+: The name/type of the visual design
+
+Image:
+: The visualization itself as an image
+
+Visual Mappings (`vismapping`): 
+: Each of the visual design mappings. Include the data mapping 
+  information about color, shape, size, position (x,y axes), and any other 
+  visual mappings. 
+
+Data Preparation (`dataprep`): 
+: Any modifications to the original data that had to be performed to 
+  generate your beautiful image.
+
+Improvements (`improvements`):
+: What are the limitations of your visualization? What improvements could 
+  you make to it?
+
+A good observation requires interpretation of the resulting image that you generate.
 
 # Guidance 
 
-## Data Format Conversion
+## Loading data into ParaView
 
 Since the field of data visualization has not yet evolved to the point of using
-universal data format standards, the format of the data you have been given
-will have to be converted to a format that your chosen program(s) can read.
-The input data format for each tool is described on each tool's respective web
-pages.
+universal data format standards, the two datasets have been converted into 
+raw format so they can be read. 
+
+You can load in data files using the menu. Just be sure to select "image
+reader" as the processor in the dialog box. Raw images don't have any
+specification of size so you will need to enter this in the "extents" section
+of the interface. This is how you tell paraview how the bytes in the raw
+datafile are laid out. The two datasets have different sizes so will require
+different numbers in the extent fields.
+
+![](images/extents_loc.png)
+
+Also make sure that you select "imageFile" as the drawing type and either
+surface or points to get started.
+
+![](images/drawing_type.png)
+
+### data1
+
+Set the extents according to the following image:
+
+![](images/data1_extents.png){height=10cm}
+
+In summary:
+
+* x 0 -- 511
+* y 0 -- 511
+* z 0 -- 62
+
+### data2
+
+Set the extents according to the following image:
+
+![](images/data2_extents.png){height=10cm}
+
+In summary:
+
+* x 0 -- 255
+* y 0 -- 255
+* z 0 -- 511
+
+## Viewing slices
+
+You can get a nice overview of the data by looking at slices:
+
+![](images/slice_view.png)
+
+You can change this view by setting the "representation" to slice. Then there
+will be a slicing section. You can change the direction and which slice you
+look at using the controls in that slicing section:
+
+![](images/slice_detail.png){height=6cm}
 
 ## Help and Hints
 
-- Each tool's web sites have lots of helpful documentation on how to use them.
-- YouTube features helpful introductory videos on how to use the ParaView, Voreen, and other
+- ParaView's web site has lots of helpful documentation on how to use it.
+- YouTube features helpful introductory videos on how to use the ParaView 
   volume rendering software.
 - You can post any number of questions on VisGuides.org or the tool authors
   for help if you run into problems.
 - The teaching assistant can also help you. But don't wait until the day before the deadline.
 
+# Todos
+
+Your task is to produce 5 different visualizations that convey some meaningful
+and hopefully interesting insight about three data sets and support your
+hypothesis as to what they may be.  The three data sets are 1) one of the sample
+data sets provided by the software you choose, 2) data1, and 3) data2.
+
 # Submission
 
-Your task is to produce 7 different visualizations that convey some meaningful
-and hopefully interesting insight about four data sets and support your
-hypothesis as to what they may be.  The four data sets are 1) one of the sample
-data sets provided by the software you choose, 2) data1, 3) data2, and 4) the 
-Visible Human. 
+You are required to submit a document, which contains your name, student
+number, and **five narrative examples** with complete template information as
+in the example submission.  *Make sure each of your visual design types is
+distinct.*  In other words, two Treemap layouts are two instances of one visual
+design.
 
-## Description Template
+Create a directory with your student number. Then put the final pdf, all 
+markdown, and all data files used. Make sure it's laid out as:
 
-For each of your 7 visualizations, use the following template.
+```
+<student number>
+|- coursework.md
+|- followup1.md
+|- followup2.md
+|- followup3.md
+|- final.md
+|- <studentnumber>.pdf
+|- <datafile 1>
+|- <datafile 2>
+|- ...
+```
 
-Image: 
-  : The visualization itself as an image
+Then, zip this directory. Please create a **.zip file** and not a tar, gzip, or
+any other format. Make sure extracting this zip file properly recreates this
+directory.
 
-Tool:
-  : The name of the tool used to generate the image
+You are required to upload the zip file to Canvas. **If you only submit the
+code or the pdf then you will receive a mark of 0**
 
-Visual Mappings: 
-  : Each of the visual mappings, e.g., color is mapped to ..., opacity
-    is mapped to..., this is where you describe your transfer function
+## Creating a pdf from VS Code preview
 
-Data conversion:
-  : If you performed any data conversion/editing, then describe it here
+The easiest way I've found to create a pdf from the preview is:
 
-Unique Observation: 
-  : Things we can learn from the visualization, e.g., from this 
-    visualization we can see this pattern...
-
-## Submission
-
-The report must be in a single pdf file! No other format is acceptable.
-You are required to submit a report which contains:
-
-1. Describe, briefly how you converted each data set such that it can be 
-   rendered by the volume visualization software of your choice. If the data
-   has been modified in order to create your images, please describe the
-   changes that were made. Please also indicate the number of hours spent on
-   this part of the assignment for help us to calibrate the difficulty levels
-   in future assignments.
-2. **Show 7 different images** 2 different images for data1, data2, and the
-   Visible Human.  Only 1 sample image for the given data set accompanying your
-   chosen software. For each data set, each of which is accompanied by a
-   template description like in the example provided. Provide a template
-   description for each of your images. For each data set, your volume
-   visualization types are distinct, e.g., an isosurface and a direct volume
-   rendering using MIP. In other words, two different isosurfaces
-   visualizations are two instances of one type of visualization. You may
-   submit additional visualizations, e.g., other volume visualization
-   techniques are slicing or the various transfer functions covered in lecture.
-3. **Demo video via Screen Capture** Use screen capturing software to
-   demonstrate the interaction of your application. Show what your
-   visualizations look like when you rotate them and modify parameters such as
-   the cutting plane position, the iso-value, or the transfer function(s).
-   The file(s) is named after the tool and feature(s) being
-   demonstrated e.g., laramee16vtkSlicingAndIsosurface.mpg.  The movie files
-   are saved in MPEG or MP4 format. You may only submit one movie file that
-   captures all the visualizations is ideal.  Blackboard cannot store very
-   large files.  Therefore, you are encouraged to upload any video demo files
-   to YouTube or Vimeo. They do not have to be public. YouTube has a “Unlisted”
-   option for videos making them only accessible to those with a direct link.
-
-Submit both files: report in pdf + demo
-video(s) to Blackboard as a .zip file or as a .tar.gz file. Note that these are
-the only two platform independent file formats.
+1) Right click on the preview window
+2) Select "Open in Browser" from the menu. Your web browser should open
+3) Use the print to pdf functionality of your browser
+4) Once you have all 5 of these, combine the pdfs together.
 
