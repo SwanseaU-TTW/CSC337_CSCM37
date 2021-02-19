@@ -204,10 +204,10 @@ markdown, and all data files used. Make sure it's laid out as:
 ```
 <student number>
 |- coursework.md
-|- followup1.md
-|- followup2.md
-|- followup3.md
-|- final.md
+|- data1_1.md
+|- data1_2.md
+|- data2_1.md
+|- data2_2.md
 |- <studentnumber>.pdf
 |- <datafile 1>
 |- <datafile 2>
