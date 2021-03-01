@@ -20,8 +20,10 @@ unknown and mysterious. Your job is to explore, hypothesize, and discover what
 phenomena the data sets depict through the use of volume rendering. Rather than
 producing a volume renderer from scratch, you are to use an existing volume
 renderer called ParaView (<http://www.paraview.org>) to help you with your
-exploration.  *You are not restricted to the above software. You may use any
-volume rendering software but you need to clear it with me first.* 
+exploration. As an alternative, you may develop the volume renderer using
+[three.js](https://threejs.org/). *You are not restricted to the above
+software. You may use any volume rendering software but you need to clear it
+with me first.* 
 
 # Tasks
 
@@ -33,7 +35,9 @@ data sets with high flexibility. They are implemented as a multi-platform
 rendering, licensed under the terms of the GNU General Public License. In order
 to accomplish this task, you are to explore the software's features (look for
 "Features") with a special focus on their various volume rendering techniques
-and transfer functions.
+and transfer functions. three.js is is a mature javascript library for
+developing 3D rendered scenes. It can be used for volume rendering (e.g.
+<https://threejs.org/examples/webgl2_materials_texture3d.html>).
 
 The aim of this assignment is to learn to use state-of-the-art volume
 visualization tools. Select a tool and, for each dataset, indentify the
@@ -198,6 +202,9 @@ in the example submission.  *Make sure each of your visual design types is
 distinct.*  In other words, two Treemap layouts are two instances of one visual
 design.
 
+If you used three.js to produce your visualizations, please include the code
+inside code blocks in the markdown files.
+
 Create a directory with your student number. Then put the final pdf, all 
 markdown, and all data files used. Make sure it's laid out as:
 
@@ -209,14 +216,12 @@ markdown, and all data files used. Make sure it's laid out as:
 |- data2_1.md
 |- data2_2.md
 |- <studentnumber>.pdf
-|- <datafile 1>
-|- <datafile 2>
 |- ...
 ```
 
 Then, zip this directory. Please create a **.zip file** and not a tar, gzip, or
 any other format. Make sure extracting this zip file properly recreates this
-directory.
+directory. **Note that datafiles are not to be included this time!**.
 
 You are required to upload the zip file to Canvas. **If you only submit the
 code or the pdf then you will receive a mark of 0**
